@@ -1,0 +1,63 @@
+openapi: 3.0.3
+info:
+  title: WA Message Service API
+  description: >
+    WA Message Service API merupakan layanan antarmuka pemrograman aplikasi (API) yang dirancang untuk memudahkan pengiriman pesan WhatsApp secara otomatis.
+    Layanan ini cocok digunakan untuk integrasi notifikasi sistem, pengingat, dan komunikasi otomatis dalam berbagai aplikasi.
+    API ini dirancang ringan, aman, dan mudah untuk diintegrasikan ke dalam sistem Anda.
+  version: 1.0.0
+  contact:
+    name: Developer Support
+
+    email: aldiraki12@gmail.com
+
+    url: https://aldirakis.vercel.app/
+
+servers:
+  - url: http://localhost:3005
+    description: Local Development Server
+  - url: https://wa-service.rakis.my.id
+    description: Production Server
+
+paths:
+  /send-message:
+    post:
+      summary: Kirim pesan WhatsApp
+      description: >
+        Endpoint ini digunakan untuk mengirimkan pesan teks ke nomor WhatsApp tujuan.
+        <br>
+        <br>
+        <b>Format nomor WhatsApp:</b> Nomor WhatsApp dalam format internasional (tanpa tanda +). contoh : 6281234567890
+        <br>
+        <b>Pesan:</b> Isi pesan yang akan dikirim ke nomor tujuan.
+      tags:
+        - WhatsApp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - phone
+                - message
+              properties:
+                phone:
+                  type: string
+                  example: "6281234567890"
+                  description: Nomor WhatsApp dalam format internasional (tanpa tanda +)
+                message:
+                  type: string
+                  example: "Halo dari WA Gateway"
+                  description: Isi pesan yang akan dikirim ke nomor tujuan
+      responses:
+        '200':
+          description: Pesan berhasil dikirim
+          example:
+            success: true
+            message: Message sent successfully
+
+        '400':
+          description: Permintaan tidak valid (misalnya data kurang atau format salah)
+        '500':
+          description: Kesalahan server internal

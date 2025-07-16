@@ -15,13 +15,17 @@ Proyek ini menyediakan endpoint API untuk mengirim pesan ke WhatsApp. Sistem bac
 
 ## 🛠️ Teknologi
 
-- Backend: Node.js / Express (atau Laravel jika kamu pakai PHP)
-- WhatsApp Gateway: Baileys / Chat API / Wablas / API kustom
+- Backend: Node.js / Express 
+- WhatsApp Gateway: Baileys 
 
 ## 📦 Instalasi
 
 ```bash
 git clone https://github.com/yourusername/wa-message-service.git
-cd wa-message-service
+cd wa-service-free 
 
+# pastikan anda sudah berada di folder root project
 npm install
+npm run dev, tunggu sampai qr code muncul di terminal
+buka aplikasi whatsapp anda, lalu add device
+scan qr code yang ada di terminal tadi
